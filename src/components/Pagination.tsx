@@ -8,6 +8,7 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
+import { siteTexts } from '@config/texts.config';
 export default function Pagination({
   currentPage,
   totalPages,
@@ -23,7 +24,7 @@ export default function Pagination({
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        Previous
+        {siteTexts.pagination.previous}
       </Button>
       {pages.map((page) => (
         <Button
@@ -41,7 +42,7 @@ export default function Pagination({
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        Next
+        {siteTexts.pagination.next}
       </Button>
     </div>
   );

@@ -46,12 +46,22 @@ A modern, customizable directory/blog template built with Next.js, MDX, and shad
 
 ## Project Structure
 
-```
 src/
 ├── app/ # Next.js app directory
 │ ├── content/ # Content page routes
 │ ├── stories/ # Story page routes
 │ ├── tags/ # Tag page routes
+│ ├── layout.tsx # Root layout component
+│ ├── not-found.tsx # 404 page component
+│ └── page.tsx # Home page
+config/ # Site configuration
+content/ # MDX content files
+src/
+├── app/ # Next.js app directory
+│ ├── [slug]/ # Dynamic slug pages (regions)
+│ ├── [slug]/[region]/ # Dynamic region pages (cities)
+│ ├── [slug]/[region]/[city]/ # Dynamic city pages (listings)
+│ ├── [slug]/[region]/[city]/[listing]/ # Dynamic listing pages
 │ ├── layout.tsx # Root layout component
 │ ├── not-found.tsx # 404 page component
 │ └── page.tsx # Home page
@@ -82,7 +92,7 @@ src/
 
 ## Content Structure
 
-Content is written in MDX format with frontmatter metadata. Create new `.mdx` files in the `src/content` directory:
+Content is written in MDX format with frontmatter metadata. Create new `.mdx` files in the `content` directory at the project root:
 
 ```mdx
 ---
@@ -115,7 +125,7 @@ Content goes here...
 
 ### Site Configuration
 
-Modify `src/config/directory.config.ts` to customize site-wide settings:
+Modify `config/directory.config.ts` at the project root to customize site-wide settings:
 
 ```typescript
 export const directoryConfig: DirectoryConfig = {

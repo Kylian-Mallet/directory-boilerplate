@@ -28,8 +28,35 @@ export interface DirectoryConfig {
     search?: boolean;
     pagination?: boolean;
   };
+  /** Theme customization for colors and typography */
   theme: {
-    fontHeading: string;
-    fontBody: string;
+    /** Font family definitions for heading and body text */
+    fonts: {
+      heading: string;
+      body: string;
+    };
+    /** Optional color palette overrides using CSS variable values (HSL, HEX, etc.) */
+    colors?: {
+      primary?: string;
+      'primary-foreground'?: string;
+      secondary?: string;
+      'secondary-foreground'?: string;
+      destructive?: string;
+      'destructive-foreground'?: string;
+      muted?: string;
+      'muted-foreground'?: string;
+      accent?: string;
+      'accent-foreground'?: string;
+      popover?: string;
+      'popover-foreground'?: string;
+      card?: string;
+      'card-foreground'?: string;
+      background?: string;
+      foreground?: string;
+      border?: string;
+      input?: string;
+      ring?: string;
+      radius?: string;
+    };
   };
 }

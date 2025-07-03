@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import { ContentItem } from '@/types/content';
-import { directoryConfig } from '@/config/directory.config';
+import { directoryConfig } from '@config/directory.config';
 
 export function useSearch(items: ContentItem[]) {
   const [searchResults, setSearchResults] = useState(items);

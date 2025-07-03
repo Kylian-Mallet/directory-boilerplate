@@ -19,7 +19,7 @@ export default function Post({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <main id="main-content" className="container mx-auto max-w-3xl py-8 px-4 sm:px-6 lg:px-8">
       <div className="relative w-full h-80 mb-8 overflow-hidden rounded-lg">
         <Image
           src={post.image}
@@ -39,6 +39,6 @@ export default function Post({ params }: { params: { slug: string } }) {
           <CardTitle className="mb-2 p-4 italic font-heading">{post.virtue}</CardTitle>
         </CardContent>
       </Card>
-    </div>
+    </main>
   );
 }

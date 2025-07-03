@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { directoryConfig } from '@/config/directory.config';
+import { directoryConfig } from '@config/directory.config';
 
 export function generateMetadata(
   title?: string,
