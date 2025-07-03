@@ -174,6 +174,11 @@ export interface SiteTexts {
     verifiedEstablishments: string;
     authenticReviews: string;
     updatedDaily: string;
+    visitSite: string;
+    discoverNow: string;
+    bookOnline: string;
+    getDirections: string;
+    callNow: string;
   };
 
   // Features and benefits
@@ -402,8 +407,8 @@ export const siteTexts: SiteTexts = {
   // Error messages
   errors: {
     pageNotFound: {
-      title: '404',
-      message: 'Page non trouvée',
+      title: 'Page non trouvée',
+      message: 'La page que vous recherchez n\'existe pas ou a été déplacée.',
       backButton: 'Retour à l\'accueil',
     },
     generalError: {
@@ -476,6 +481,11 @@ export const siteTexts: SiteTexts = {
     verifiedEstablishments: 'Établissements vérifiés',
     authenticReviews: 'Avis authentiques',
     updatedDaily: 'Mis à jour quotidiennement',
+    visitSite: 'Découvrir maintenant',
+    discoverNow: 'Découvrir maintenant',
+    bookOnline: 'Réserver en ligne',
+    getDirections: 'Voir l\'itinéraire',
+    callNow: 'Appeler maintenant',
   },
 
   // Features and benefits
