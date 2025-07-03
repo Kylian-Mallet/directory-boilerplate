@@ -52,7 +52,7 @@ export default function Home() {
                             <Button 
                                 variant="outline" 
                                 size="lg"
-                                className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm h-14 px-8 text-lg font-semibold"
+                                className="bg-white/20 border-white/40 text-white hover:bg-white/30 hover:border-white/60 backdrop-blur-sm h-14 px-8 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                                 asChild
                             >
                                 <Link href="#regions">
