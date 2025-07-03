@@ -3,7 +3,7 @@ import Search from '@/components/Search';
 import { siteTexts } from '@config/texts.config';
 import { directoryConfig } from '@config/directory.config';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Star, TrendingUp } from 'lucide-react';
+import { ArrowRight, MapPin, Star, TrendingUp, Search as SearchIcon, Filter, Zap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -86,19 +86,107 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Search Section */}
-            <section id="search" className="py-20 bg-background">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+            {/* Enhanced Search Section */}
+            <section id="search" className="py-24 bg-gradient-to-br from-background via-muted/20 to-background relative overflow-hidden">
+                {/* Decorative background elements */}
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+                
+                <div className="container mx-auto px-4 relative">
+                    {/* Header */}
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg">
+                            <SearchIcon className="h-4 w-4" />
+                            Recherche Intelligente
+                        </div>
+                        <h2 className="text-4xl lg:text-6xl font-heading font-bold text-foreground mb-6">
                             {siteTexts.search.title}
                         </h2>
-                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                            Trouvez rapidement ce que vous cherchez grâce à notre système de recherche avancé
+                        <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                            Trouvez rapidement les meilleurs établissements grâce à notre système de recherche avancé et nos filtres intelligents
                         </p>
                     </div>
-                    <div className="max-w-4xl mx-auto">
-                        <Search items={content} />
+
+                    {/* Search Features Preview */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                        <Card className="text-center p-6 border-0 card-shadow bg-card/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <CardContent className="space-y-4">
+                                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
+                                    <SearchIcon className="h-8 w-8 text-primary" />
+                                </div>
+                                <h3 className="text-xl font-heading font-bold text-foreground">
+                                    Recherche Rapide
+                                </h3>
+                                <p className="text-muted-foreground">
+                                    Trouvez instantanément ce que vous cherchez par nom, adresse ou service
+                                </p>
+                            </CardContent>
+                        </Card>
+                        
+                        <Card className="text-center p-6 border-0 card-shadow bg-card/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <CardContent className="space-y-4">
+                                <div className="w-16 h-16 mx-auto bg-secondary/10 rounded-2xl flex items-center justify-center">
+                                    <Filter className="h-8 w-8 text-secondary" />
+                                </div>
+                                <h3 className="text-xl font-heading font-bold text-foreground">
+                                    Filtres Avancés
+                                </h3>
+                                <p className="text-muted-foreground">
+                                    Affinez vos résultats par catégorie, services et équipements
+                                </p>
+                            </CardContent>
+                        </Card>
+                        
+                        <Card className="text-center p-6 border-0 card-shadow bg-card/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <CardContent className="space-y-4">
+                                <div className="w-16 h-16 mx-auto bg-accent/10 rounded-2xl flex items-center justify-center">
+                                    <Zap className="h-8 w-8 text-accent" />
+                                </div>
+                                <h3 className="text-xl font-heading font-bold text-foreground">
+                                    Résultats Instantanés
+                                </h3>
+                                <p className="text-muted-foreground">
+                                    Obtenez des résultats pertinents en temps réel pendant que vous tapez
+                                </p>
+                            </CardContent>
+                        </Card>
+                    </div>
+                    
+                    {/* Main Search Component */}
+                    <div className="max-w-6xl mx-auto">
+                        <Card className="border-0 card-shadow bg-card/95 backdrop-blur-sm overflow-hidden">
+                            <CardContent className="p-8 lg:p-12">
+                                <Search items={content} />
+                            </CardContent>
+                        </Card>
+                    </div>
+
+                    {/* Quick Stats */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+                        <div className="text-center p-6 bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50">
+                            <div className="text-2xl lg:text-3xl font-heading font-bold text-primary mb-2">
+                                {content.length}
+                            </div>
+                            <div className="text-sm text-muted-foreground font-medium">Établissements référencés</div>
+                        </div>
+                        <div className="text-center p-6 bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50">
+                            <div className="text-2xl lg:text-3xl font-heading font-bold text-secondary mb-2">
+                                {regions.length}
+                            </div>
+                            <div className="text-sm text-muted-foreground font-medium">Régions couvertes</div>
+                        </div>
+                        <div className="text-center p-6 bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50">
+                            <div className="text-2xl lg:text-3xl font-heading font-bold text-accent mb-2">
+                                100%
+                            </div>
+                            <div className="text-sm text-muted-foreground font-medium">Gratuit</div>
+                        </div>
+                        <div className="text-center p-6 bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50">
+                            <div className="text-2xl lg:text-3xl font-heading font-bold text-primary mb-2">
+                                24/7
+                            </div>
+                            <div className="text-sm text-muted-foreground font-medium">Disponible</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -163,7 +251,7 @@ export default function Home() {
                         <Card className="text-center p-8 border-0 card-shadow bg-card hover:shadow-xl transition-shadow duration-300">
                             <CardContent className="space-y-4">
                                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
-                                    <Search className="h-8 w-8 text-primary" />
+                                    <SearchIcon className="h-8 w-8 text-primary" />
                                 </div>
                                 <h3 className="text-2xl font-heading font-bold text-foreground">
                                     Recherche Avancée
