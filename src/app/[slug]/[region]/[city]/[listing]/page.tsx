@@ -51,13 +51,13 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
     const equipment = meta.equipment as string[];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+        <div className="min-h-screen bg-background">
             {/* Navigation */}
-            <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
+            <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
                 <div className="container mx-auto px-4 py-4">
                     <Link 
                         href={`/${slug}/${region}/${city}`}
-                        className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors group"
+                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
                     >
                         <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                         <span className="text-sm font-medium">Retour à {city}</span>
@@ -71,7 +71,7 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                     <div className="grid lg:grid-cols-2 gap-8 items-start">
                         {/* Image */}
                         <div className="relative group">
-                            <div className="aspect-[4/3] overflow-hidden rounded-3xl bg-gradient-to-br from-slate-200 to-slate-300 shadow-2xl">
+                            <div className="aspect-[4/3] overflow-hidden rounded-3xl bg-muted shadow-2xl">
                                 {imageSrc && (
                                     <img
                                         src={imageSrc}
@@ -81,7 +81,7 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                                 )}
                                 {meta.type && (
                                     <div className="absolute top-6 right-6">
-                                        <span className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-slate-800 px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                                        <span className="inline-flex items-center gap-2 bg-card/90 backdrop-blur-sm text-card-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg border border-border">
                                             <Award className="h-4 w-4" />
                                             {meta.type}
                                         </span>
@@ -93,27 +93,27 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                         {/* Content */}
                         <div className="space-y-6">
                             <div className="space-y-4">
-                                <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+                                <h1 className="text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight">
                                     {title}
                                 </h1>
                                 
                                 {address && (
-                                    <div className="flex items-start gap-3 text-slate-600">
-                                        <MapPin className="h-5 w-5 mt-0.5 text-slate-400" />
+                                    <div className="flex items-start gap-3 text-muted-foreground">
+                                        <MapPin className="h-5 w-5 mt-0.5" />
                                         <span className="text-lg leading-relaxed">{address}</span>
                                     </div>
                                 )}
 
                                 {(rating || reviews) && (
                                     <div className="flex items-center gap-4">
-                                        <div className="flex items-center gap-2 bg-amber-50 px-4 py-2 rounded-full">
-                                            <Star className="h-5 w-5 text-amber-500 fill-current" />
-                                            <span className="font-semibold text-amber-700">
+                                        <div className="flex items-center gap-2 bg-accent/10 text-accent-foreground px-4 py-2 rounded-full border border-accent/20">
+                                            <Star className="h-5 w-5 text-accent fill-current" />
+                                            <span className="font-semibold">
                                                 {rating?.toFixed(1)}
                                             </span>
                                         </div>
                                         {reviews && (
-                                            <span className="text-slate-500">
+                                            <span className="text-muted-foreground">
                                                 {reviews} avis
                                             </span>
                                         )}
@@ -122,10 +122,10 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                             </div>
 
                             {/* Contact Card */}
-                            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200/50 shadow-lg">
+                            <Card className="bg-primary/5 border-primary/20 shadow-lg">
                                 <CardContent className="p-6 space-y-4">
-                                    <h3 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
-                                        <Phone className="h-5 w-5 text-blue-600" />
+                                    <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
+                                        <Phone className="h-5 w-5 text-primary" />
                                         {siteTexts.listing.contactTitle}
                                     </h3>
                                     
@@ -133,19 +133,19 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                                         {phone && (
                                             <a 
                                                 href={`tel:${phone}`}
-                                                className="flex items-center gap-3 p-3 bg-white rounded-xl hover:bg-blue-50 transition-colors group"
+                                                className="flex items-center gap-3 p-3 bg-card rounded-xl hover:bg-muted transition-colors group border border-border"
                                             >
-                                                <div className="p-2 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
-                                                    <Phone className="h-4 w-4 text-blue-600" />
+                                                <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                                                    <Phone className="h-4 w-4 text-primary" />
                                                 </div>
-                                                <span className="font-medium text-slate-700">{phone}</span>
+                                                <span className="font-medium text-foreground">{phone}</span>
                                             </a>
                                         )}
                                         
                                         {affiliateLink && (
                                             <Button 
                                                 asChild 
-                                                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 h-12 text-base font-semibold"
+                                                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 h-12 text-base font-semibold"
                                             >
                                                 <a href={affiliateLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                                                     <ExternalLink className="h-4 w-4" />
@@ -164,16 +164,16 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                 <div className="grid lg:grid-cols-3 gap-8 mb-12">
                     {/* Opening Hours */}
                     {openingHours && (
-                        <Card className="bg-white shadow-lg border-0 hover:shadow-xl transition-shadow duration-300">
+                        <Card className="bg-card shadow-lg border-border hover:shadow-xl transition-shadow duration-300">
                             <CardContent className="p-6">
-                                <h3 className="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                                    <Clock className="h-5 w-5 text-emerald-600" />
+                                <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                                    <Clock className="h-5 w-5 text-accent" />
                                     Horaires d'ouverture
                                 </h3>
                                 <div className="space-y-2">
                                     {openingHours.map((hour, index) => (
-                                        <div key={index} className="flex justify-between items-center py-2 border-b border-slate-100 last:border-0">
-                                            <span className="text-slate-600">{hour}</span>
+                                        <div key={index} className="flex justify-between items-center py-2 border-b border-border last:border-0">
+                                            <span className="text-muted-foreground">{hour}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -183,19 +183,19 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
 
                     {/* Services */}
                     {services && (
-                        <Card className="bg-white shadow-lg border-0 hover:shadow-xl transition-shadow duration-300">
+                        <Card className="bg-card shadow-lg border-border hover:shadow-xl transition-shadow duration-300">
                             <CardContent className="p-6">
-                                <h3 className="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                                    <Shield className="h-5 w-5 text-blue-600" />
+                                <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                                    <Shield className="h-5 w-5 text-primary" />
                                     Services
                                 </h3>
                                 <div className="space-y-3">
                                     {services.map((service, index) => (
-                                        <div key={index} className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl">
-                                            <div className="p-2 bg-blue-100 rounded-lg">
+                                        <div key={index} className="flex items-center gap-3 p-3 bg-muted rounded-xl">
+                                            <div className="p-2 bg-primary/10 rounded-lg">
                                                 {getServiceIcon(service)}
                                             </div>
-                                            <span className="text-slate-700 font-medium">{service}</span>
+                                            <span className="text-foreground font-medium">{service}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -205,19 +205,19 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
 
                     {/* Equipment */}
                     {equipment && (
-                        <Card className="bg-white shadow-lg border-0 hover:shadow-xl transition-shadow duration-300">
+                        <Card className="bg-card shadow-lg border-border hover:shadow-xl transition-shadow duration-300">
                             <CardContent className="p-6">
-                                <h3 className="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                                    <Award className="h-5 w-5 text-purple-600" />
+                                <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                                    <Award className="h-5 w-5 text-secondary" />
                                     Équipements
                                 </h3>
                                 <div className="space-y-3">
                                     {equipment.map((item, index) => (
-                                        <div key={index} className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl">
-                                            <div className="p-2 bg-purple-100 rounded-lg">
-                                                <Award className="h-4 w-4 text-purple-600" />
+                                        <div key={index} className="flex items-center gap-3 p-3 bg-muted rounded-xl">
+                                            <div className="p-2 bg-secondary/10 rounded-lg">
+                                                <Award className="h-4 w-4 text-secondary" />
                                             </div>
-                                            <span className="text-slate-700 font-medium">{item}</span>
+                                            <span className="text-foreground font-medium">{item}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -227,9 +227,9 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                 </div>
 
                 {/* Description Section */}
-                <Card className="bg-white shadow-lg border-0 mb-12">
+                <Card className="bg-card shadow-lg border-border mb-12">
                     <CardContent className="p-8">
-                        <div className="prose prose-lg prose-slate max-w-none">
+                        <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary hover:prose-a:text-primary/80">
                             <MDXRemote source={content} />
                         </div>
                     </CardContent>
@@ -238,18 +238,18 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                 {/* Bottom CTA */}
                 {affiliateLink && (
                     <div className="text-center">
-                        <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 border-0 shadow-2xl">
+                        <Card className="bg-primary border-0 shadow-2xl">
                             <CardContent className="p-8">
-                                <h3 className="text-2xl font-bold text-white mb-4">
+                                <h3 className="text-2xl font-heading font-bold text-primary-foreground mb-4">
                                     Prêt à découvrir {title} ?
                                 </h3>
-                                <p className="text-blue-100 mb-6 text-lg">
+                                <p className="text-primary-foreground/80 mb-6 text-lg">
                                     Visitez leur site officiel pour plus d'informations et réservations
                                 </p>
                                 <Button 
                                     asChild 
                                     size="lg"
-                                    className="bg-white text-blue-600 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all duration-300 h-14 px-8 text-lg font-semibold"
+                                    className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl transition-all duration-300 h-14 px-8 text-lg font-semibold"
                                 >
                                     <a href={affiliateLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                                         <ExternalLink className="h-5 w-5" />
