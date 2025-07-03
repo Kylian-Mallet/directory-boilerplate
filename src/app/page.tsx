@@ -212,7 +212,7 @@ export default function Home() {
                                             <MapPin className="h-8 w-8 text-white" />
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-heading font-bold text-foreground group-hover:text-primary transition-colors">
+                                            <h3 className="text-xl font-heading font-bold text-foreground group-hover:text-primary transition-colors capitalize">
                                                 {region}
                                             </h3>
                                             <p className="text-muted-foreground text-sm">
