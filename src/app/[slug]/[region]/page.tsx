@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getSlugs, getRegions, getCities } from '@/lib/content';
 import { notFound } from 'next/navigation';
-import { MapPin, ArrowLeft, Building2 } from 'lucide-react';
+import { MapPin, Building2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export async function generateStaticParams() {
@@ -31,19 +31,6 @@ export default function RegionPage({ params: { slug, region } }: RegionPageProps
     
     return (
         <div className="min-h-screen bg-background">
-            {/* Navigation */}
-            <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-                <div className="container mx-auto px-4 py-4">
-                    <Link 
-                        href={`/${slug}`}
-                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
-                    >
-                        <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-                        <span className="text-sm font-medium">Retour à {slug}</span>
-                    </Link>
-                </div>
-            </div>
-
             <main className="container mx-auto px-4 py-12">
                 {/* Header */}
                 <div className="text-center mb-16">

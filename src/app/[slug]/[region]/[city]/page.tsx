@@ -1,8 +1,7 @@
 import ContentGrid from '@/components/layout/ContentGrid';
 import { getSlugs, getRegions, getCities, getListings } from '@/lib/content';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Building2, MapPin } from 'lucide-react';
-import Link from 'next/link';
+import { Building2, MapPin } from 'lucide-react';
 
 export async function generateStaticParams() {
     const params: { slug: string; region: string; city: string }[] = [];
@@ -30,19 +29,6 @@ export default function CityPage({ params: { slug, region, city } }: CityPagePro
     
     return (
         <div className="min-h-screen bg-background">
-            {/* Navigation */}
-            <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-                <div className="container mx-auto px-4 py-4">
-                    <Link 
-                        href={`/${slug}/${region}`}
-                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
-                    >
-                        <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-                        <span className="text-sm font-medium">Retour à {region}</span>
-                    </Link>
-                </div>
-            </div>
-
             <main className="container mx-auto px-4 py-12">
                 {/* Header */}
                 <div className="text-center mb-16">

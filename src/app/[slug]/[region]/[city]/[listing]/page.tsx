@@ -1,11 +1,10 @@
 import { getSlugs, getRegions, getCities, getListingSlugs, getListing } from '@/lib/content';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
-import { MapPin, Star, Phone, Clock, Wifi, Car, Utensils, ArrowLeft, ExternalLink, Shield, Award } from 'lucide-react';
+import { MapPin, Star, Phone, Clock, Wifi, Car, Utensils, ExternalLink, Shield, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { siteTexts } from '@config/texts.config';
-import Link from 'next/link';
 
 export async function generateStaticParams() {
     const params: { slug: string; region: string; city: string; listing: string }[] = [];
@@ -52,19 +51,6 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
 
     return (
         <div className="min-h-screen bg-background">
-            {/* Navigation */}
-            <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-                <div className="container mx-auto px-4 py-4">
-                    <Link 
-                        href={`/${slug}/${region}/${city}`}
-                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
-                    >
-                        <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-                        <span className="text-sm font-medium">Retour à {city}</span>
-                    </Link>
-                </div>
-            </div>
-
             <main className="container mx-auto px-4 py-8 max-w-6xl">
                 {/* Hero Section */}
                 <div className="relative mb-12">
