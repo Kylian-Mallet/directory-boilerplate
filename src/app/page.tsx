@@ -86,6 +86,23 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Search Section */}
+            <section id="search" className="py-20 bg-background">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+                            {siteTexts.search.title}
+                        </h2>
+                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                            Trouvez rapidement ce que vous cherchez grâce à notre système de recherche avancé
+                        </p>
+                    </div>
+                    <div className="max-w-4xl mx-auto">
+                        <Search items={content} />
+                    </div>
+                </div>
+            </section>
+
             {/* Regions Section */}
             <section id="regions" className="py-20 bg-muted/30">
                 <div className="container mx-auto px-4">
