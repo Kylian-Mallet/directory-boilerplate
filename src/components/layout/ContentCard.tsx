@@ -1,9 +1,9 @@
-import { MapPin } from 'lucide-react';
+import { MapPin, Star, ExternalLink, Award } from 'lucide-react';
 import React from 'react';
-// Using <img> for external URLs without Next.js image optimization
 import Link from 'next/link';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { ContentItem } from '@/types/content';
+import { Button } from '@/components/ui/button';
 
 interface ContentCardProps {
     item: ContentItem;
@@ -13,35 +13,83 @@ export default function ContentCard({ item }: ContentCardProps) {
     const { fileName, meta } = item;
 
     return (
-        <Link href={ `/${ fileName }` }>
-            <Card className="rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 h-80 flex flex-col">
-                {/* Preview image */ }
-                { (meta.photo) && (
-                    <div className="h-60 overflow-hidden rounded-t-lg relative">
-                        <img
-                            src={ meta.photo }
-                            alt={ meta.name }
-                            className="object-cover object-center w-full h-full"
-                        />
-                        {meta.type && (
-                            <span className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-2 py-1 rounded-full shadow">
+        <Card className="group overflow-hidden border-0 card-shadow bg-card hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+            {/* Preview image */}
+            {meta.photo && (
+                <div className="relative h-48 overflow-hidden">
+                    <img
+                        src={meta.photo}
+                        alt={meta.name}
+                        className="object-cover object-center w-full h-full group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    {meta.type && (
+                        <div className="absolute top-3 right-3">
+                            <span className="inline-flex items-center gap-1 bg-card/90 backdrop-blur-sm text-card-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg border border-border">
+                                <Award className="h-3 w-3" />
                                 {meta.type}
+                            </span>
+                        </div>
+                    )}
+                    {meta.rating && (
+                        <div className="absolute top-3 left-3">
+                            <span className="inline-flex items-center gap-1 bg-accent/90 backdrop-blur-sm text-accent-foreground text-xs font-semibold px-2 py-1 rounded-full shadow-lg">
+                                <Star className="h-3 w-3 fill-current" />
+                                {meta.rating.toFixed(1)}
+                            </span>
+                        </div>
+                    )}
+                </div>
+            )}
+            
+            <CardContent className="p-6 space-y-4">
+                {/* Business name */}
+                <div className="space-y-2">
+                    <CardTitle className="text-xl font-heading font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                        {meta.name}
+                    </CardTitle>
+                    
+                    {/* Address preview */}
+                    {meta.full_address && (
+                        <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                            <span className="line-clamp-2">{meta.full_address}</span>
+                        </div>
+                    )}
+                </div>
+
+                {/* Services preview */}
+                {meta.services && meta.services.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                        {meta.services.slice(0, 2).map((service, index) => (
+                            <span 
+                                key={index}
+                                className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded-full"
+                            >
+                                {service}
+                            </span>
+                        ))}
+                        {meta.services.length > 2 && (
+                            <span className="text-xs text-muted-foreground px-2 py-1">
+                                +{meta.services.length - 2}
                             </span>
                         )}
                     </div>
-                ) }
-                <CardContent className="p-4 space-y-2 flex-grow flex flex-col justify-between">
-                    {/* Business name */ }
-                    <CardTitle className="line-clamp-2 pb-1">{ meta.name }</CardTitle>
-                    {/* Address preview */ }
-                    { meta.full_address && (
-                        <span className="text-xs text-muted-foreground line-clamp-2 flex items-center">
-                            <MapPin className="mr-1 h-4 w-4"/>
-                            { meta.full_address }
-                        </span>
-                    ) }
-                </CardContent>
-            </Card>
-        </Link>
+                )}
+
+                {/* Action buttons */}
+                <div className="flex gap-2 pt-2">
+                    <Button 
+                        asChild 
+                        className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg transition-all duration-300"
+                    >
+                        <Link href={`/${fileName}`} className="flex items-center gap-2">
+                            Voir détails
+                            <ExternalLink className="h-4 w-4" />
+                        </Link>
+                    </Button>
+                </div>
+            </CardContent>
+        </Card>
     );
 }

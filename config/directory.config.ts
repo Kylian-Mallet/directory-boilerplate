@@ -13,32 +13,37 @@ export const directoryConfig: DirectoryConfig = {
     },
     theme: {
         fonts: {
-            // Google Font family names with fallback
-            heading: 'Inter, sans-serif',
+            // Modern font pairing - Outfit for headings, Inter for body
+            heading: 'Outfit, sans-serif',
             body: 'Inter, sans-serif',
         },
         colors: {
-            // Modern sophisticated color palette
-            primary: '#2563eb',           // Vibrant blue
+            // Premium dark theme with vibrant accents
+            primary: '#6366f1',           // Indigo primary
             'primary-foreground': '#ffffff',
-            secondary: '#64748b',         // Slate gray
+            secondary: '#8b5cf6',         // Purple secondary
             'secondary-foreground': '#ffffff',
-            destructive: '#dc2626',       // Modern red
+            destructive: '#ef4444',       // Red for errors
             'destructive-foreground': '#ffffff',
-            muted: '#f8fafc',            // Very light blue-gray
+            muted: '#f8fafc',            // Light gray background
             'muted-foreground': '#64748b',
-            accent: '#7c3aed',           // Purple accent
+            accent: '#06b6d4',           // Cyan accent
             'accent-foreground': '#ffffff',
             popover: '#ffffff',
             'popover-foreground': '#0f172a',
             card: '#ffffff',
             'card-foreground': '#0f172a',
-            background: '#ffffff',        // Clean white background
-            foreground: '#0f172a',       // Deep slate for text
-            border: '#e2e8f0',           // Light border
+            background: '#fafafa',        // Warm white background
+            foreground: '#0f172a',       // Dark slate text
+            border: '#e2e8f0',           // Subtle borders
             input: '#f1f5f9',            // Light input background
-            ring: '#2563eb',             // Focus ring matches primary
-            radius: '0.75rem',           // Slightly more rounded
+            ring: '#6366f1',             // Focus ring
+            radius: '1rem',              // Rounded corners
+            // Custom gradient colors
+            'gradient-from': '#6366f1',   // Primary gradient start
+            'gradient-to': '#8b5cf6',     // Primary gradient end
+            'hero-bg': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+            'card-shadow': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
         },
     },
 };
