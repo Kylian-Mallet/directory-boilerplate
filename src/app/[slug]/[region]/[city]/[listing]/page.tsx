@@ -1,7 +1,7 @@
 import { getSlugs, getRegions, getCities, getListingSlugs, getListing } from '@/lib/content';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
-import { MapPin, Star, Phone, Clock, Wifi, Car, Utensils, ExternalLink, Shield, Award } from 'lucide-react';
+import { MapPin, Star, Phone, Clock, ExternalLink, Shield, Award, Wifi, Car, Utensils } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { siteTexts } from '@config/texts.config';
@@ -128,115 +128,113 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <div className="min-h-screen bg-background">
-                <main className="container mx-auto px-4 py-8 max-w-6xl">
+                <main className="container mx-auto px-4 py-8 max-w-4xl">
                     {/* Hero Section */}
-                    <div className="relative mb-12">
-                        <div className="grid lg:grid-cols-2 gap-8 items-start">
-                            {/* Image */}
-                            <div className="relative group">
-                                <div className="aspect-[4/3] overflow-hidden rounded-3xl bg-muted shadow-2xl">
-                                    {imageSrc && (
-                                        <img
-                                            src={imageSrc}
-                                            alt={title}
-                                            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
-                                        />
-                                    )}
-                                    {meta.type && (
-                                        <div className="absolute top-6 right-6">
-                                            <span className="inline-flex items-center gap-2 bg-card/90 backdrop-blur-sm text-card-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg border border-border">
-                                                <Award className="h-4 w-4" />
-                                                {meta.type}
-                                            </span>
-                                        </div>
+                    <div className="mb-8">
+                        {imageSrc && (
+                            <div className="relative aspect-[16/9] mb-6 overflow-hidden rounded-2xl">
+                                <img
+                                    src={imageSrc}
+                                    alt={title}
+                                    className="object-cover w-full h-full"
+                                />
+                                {meta.type && (
+                                    <div className="absolute top-4 right-4">
+                                        <span className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm text-gray-800 px-3 py-1.5 rounded-full text-sm font-semibold shadow-lg">
+                                            <Award className="h-4 w-4" />
+                                            {meta.type}
+                                        </span>
+                                    </div>
+                                )}
+                                {rating && (
+                                    <div className="absolute top-4 left-4">
+                                        <span className="inline-flex items-center gap-1 bg-accent/90 backdrop-blur-sm text-accent-foreground px-3 py-1.5 rounded-full text-sm font-semibold shadow-lg">
+                                            <Star className="h-4 w-4 fill-current" />
+                                            {rating.toFixed(1)}
+                                        </span>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        <div className="space-y-4">
+                            <h1 className="text-3xl lg:text-4xl font-heading font-bold text-foreground">
+                                {title}
+                            </h1>
+                            
+                            {address && (
+                                <div className="flex items-start gap-2 text-muted-foreground">
+                                    <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                                    <span className="text-lg">{address}</span>
+                                </div>
+                            )}
+
+                            {(rating || reviews) && (
+                                <div className="flex items-center gap-4">
+                                    <div className="flex items-center gap-2">
+                                        <Star className="h-5 w-5 text-accent fill-current" />
+                                        <span className="font-semibold text-foreground">
+                                            {rating?.toFixed(1)}
+                                        </span>
+                                    </div>
+                                    {reviews && (
+                                        <span className="text-muted-foreground">
+                                            ({reviews} {siteTexts.listing.reviews})
+                                        </span>
                                     )}
                                 </div>
-                            </div>
-
-                            {/* Content */}
-                            <div className="space-y-6">
-                                <div className="space-y-4">
-                                    <h1 className="text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight">
-                                        {title}
-                                    </h1>
-                                    
-                                    {address && (
-                                        <div className="flex items-start gap-3 text-muted-foreground">
-                                            <MapPin className="h-5 w-5 mt-0.5" />
-                                            <span className="text-lg leading-relaxed">{address}</span>
-                                        </div>
-                                    )}
-
-                                    {(rating || reviews) && (
-                                        <div className="flex items-center gap-4">
-                                            <div className="flex items-center gap-2 bg-accent/10 text-accent-foreground px-4 py-2 rounded-full border border-accent/20">
-                                                <Star className="h-5 w-5 text-accent fill-current" />
-                                                <span className="font-semibold">
-                                                    {rating?.toFixed(1)}
-                                                </span>
-                                            </div>
-                                            {reviews && (
-                                                <span className="text-muted-foreground">
-                                                    {reviews} {siteTexts.listing.reviews}
-                                                </span>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* Contact Card */}
-                                <Card className="bg-primary/5 border-primary/20 shadow-lg">
-                                    <CardContent className="p-6 space-y-4">
-                                        <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
-                                            <Phone className="h-5 w-5 text-primary" />
-                                            {siteTexts.listing.contactTitle}
-                                        </h3>
-                                        
-                                        <div className="space-y-3">
-                                            {phone && (
-                                                <a 
-                                                    href={`tel:${phone}`}
-                                                    className="flex items-center gap-3 p-3 bg-card rounded-xl hover:bg-muted transition-colors group border border-border"
-                                                >
-                                                    <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                                                        <Phone className="h-4 w-4 text-primary" />
-                                                    </div>
-                                                    <span className="font-medium text-foreground">{phone}</span>
-                                                </a>
-                                            )}
-                                            
-                                            {affiliateLink && (
-                                                <Button 
-                                                    asChild 
-                                                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 h-12 text-base font-semibold"
-                                                >
-                                                    <a href={affiliateLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                                                        <ExternalLink className="h-4 w-4" />
-                                                        {siteTexts.listing.affiliateCta}
-                                                    </a>
-                                                </Button>
-                                            )}
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </div>
+                            )}
                         </div>
                     </div>
 
+                    {/* Contact & CTA */}
+                    {(phone || affiliateLink) && (
+                        <Card className="mb-8 bg-primary/5 border-primary/20">
+                            <CardContent className="p-6">
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    {phone && (
+                                        <Button 
+                                            asChild 
+                                            variant="outline"
+                                            className="flex-1 border-primary/30 hover:bg-primary/10"
+                                        >
+                                            <a href={`tel:${phone}`} className="flex items-center gap-2">
+                                                <Phone className="h-4 w-4" />
+                                                {phone}
+                                            </a>
+                                        </Button>
+                                    )}
+                                    
+                                    {affiliateLink && (
+                                        <Button 
+                                            asChild 
+                                            className="flex-1 bg-primary hover:bg-primary/90"
+                                        >
+                                            <a href={affiliateLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                                <ExternalLink className="h-4 w-4" />
+                                                {siteTexts.listing.visitSite}
+                                            </a>
+                                        </Button>
+                                    )}
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
                     {/* Information Grid */}
-                    <div className="grid lg:grid-cols-3 gap-8 mb-12">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                         {/* Opening Hours */}
                         {openingHours && (
-                            <Card className="bg-card shadow-lg border-border hover:shadow-xl transition-shadow duration-300">
+                            <Card>
                                 <CardContent className="p-6">
-                                    <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                                        <Clock className="h-5 w-5 text-accent" />
+                                    <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+                                        <Clock className="h-5 w-5 text-primary" />
                                         {siteTexts.listing.openingHours}
                                     </h3>
                                     <div className="space-y-2">
                                         {openingHours.map((hour, index) => (
-                                            <div key={index} className="flex justify-between items-center py-2 border-b border-border last:border-0">
-                                                <span className="text-muted-foreground">{hour}</span>
+                                            <div key={index} className="text-sm text-muted-foreground">
+                                                {hour}
                                             </div>
                                         ))}
                                     </div>
@@ -246,19 +244,17 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
 
                         {/* Services */}
                         {services && (
-                            <Card className="bg-card shadow-lg border-border hover:shadow-xl transition-shadow duration-300">
+                            <Card>
                                 <CardContent className="p-6">
-                                    <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                                        <Shield className="h-5 w-5 text-primary" />
+                                    <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+                                        <Shield className="h-5 w-5 text-secondary" />
                                         {siteTexts.listing.services}
                                     </h3>
-                                    <div className="space-y-3">
+                                    <div className="space-y-2">
                                         {services.map((service, index) => (
-                                            <div key={index} className="flex items-center gap-3 p-3 bg-muted rounded-xl">
-                                                <div className="p-2 bg-primary/10 rounded-lg">
-                                                    {getServiceIcon(service)}
-                                                </div>
-                                                <span className="text-foreground font-medium">{service}</span>
+                                            <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                {getServiceIcon(service)}
+                                                <span>{service}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -268,19 +264,17 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
 
                         {/* Equipment */}
                         {equipment && (
-                            <Card className="bg-card shadow-lg border-border hover:shadow-xl transition-shadow duration-300">
+                            <Card>
                                 <CardContent className="p-6">
-                                    <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                                        <Award className="h-5 w-5 text-secondary" />
+                                    <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+                                        <Award className="h-5 w-5 text-accent" />
                                         {siteTexts.listing.equipment}
                                     </h3>
-                                    <div className="space-y-3">
+                                    <div className="space-y-2">
                                         {equipment.map((item, index) => (
-                                            <div key={index} className="flex items-center gap-3 p-3 bg-muted rounded-xl">
-                                                <div className="p-2 bg-secondary/10 rounded-lg">
-                                                    <Award className="h-4 w-4 text-secondary" />
-                                                </div>
-                                                <span className="text-foreground font-medium">{item}</span>
+                                            <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                <Award className="h-3 w-3" />
+                                                <span>{item}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -289,72 +283,45 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                         )}
                     </div>
 
-                    {/* Description Section */}
-                    <Card className="bg-card shadow-lg border-border mb-12">
-                        <CardContent className="p-8">
-                            <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary hover:prose-a:text-primary/80">
+                    {/* Description */}
+                    <Card className="mb-8">
+                        <CardContent className="p-6">
+                            <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary">
                                 <MDXRemote source={content} />
                             </div>
                         </CardContent>
                     </Card>
 
-                    {/* Bottom CTA */}
-                    {affiliateLink && (
-                        <div className="text-center mb-12">
-                            <Card className="bg-primary border-0 shadow-2xl">
-                                <CardContent className="p-8">
-                                    <h3 className="text-2xl font-heading font-bold text-primary-foreground mb-4">
-                                        {siteTexts.listing.readyToDiscover} {title} ?
+                    {/* SEO Content */}
+                    <Card className="bg-muted/30">
+                        <CardContent className="p-6">
+                            <h2 className="text-xl font-heading font-bold text-foreground mb-4">
+                                {siteTexts.listing.about} {title}
+                            </h2>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h3 className="font-semibold text-foreground mb-2">
+                                        {siteTexts.listing.practicalInfo}
                                     </h3>
-                                    <p className="text-primary-foreground/80 mb-6 text-lg">
-                                        {siteTexts.listing.visitOfficialSite}
-                                    </p>
-                                    <Button 
-                                        asChild 
-                                        size="lg"
-                                        className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl transition-all duration-300 h-14 px-8 text-lg font-semibold"
-                                    >
-                                        <a href={affiliateLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                                            <ExternalLink className="h-5 w-5" />
-                                            {siteTexts.listing.bottomCta}
-                                        </a>
-                                    </Button>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    )}
-
-                    {/* SEO Content Section - Moved to Bottom */}
-                    <div className="max-w-4xl mx-auto">
-                        <Card className="border-0 card-shadow bg-card">
-                            <CardContent className="p-8">
-                                <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
-                                    {siteTexts.listing.about} {title}
-                                </h2>
-                                <div className="grid md:grid-cols-2 gap-8">
-                                    <div>
-                                        <h3 className="text-lg font-semibold text-foreground mb-3">
-                                            {siteTexts.listing.practicalInfo}
-                                        </h3>
-                                        <div className="space-y-2 text-muted-foreground">
-                                            <p><strong>{siteTexts.listing.type} :</strong> {meta.type}</p>
-                                            <p><strong>{siteTexts.listing.city} :</strong> {city}</p>
-                                            <p><strong>{siteTexts.listing.region} :</strong> {region}</p>
-                                            {rating && <p><strong>{siteTexts.listing.note} :</strong> {rating}/5</p>}
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-semibold text-foreground mb-3">
-                                            {siteTexts.listing.whyChooseUs}
-                                        </h3>
-                                        <p className="text-muted-foreground">
-                                            {title} {siteTexts.listing.qualityPartner}
-                                        </p>
+                                    <div className="space-y-1 text-sm text-muted-foreground">
+                                        <p><strong>Type :</strong> {meta.type}</p>
+                                        <p><strong>Ville :</strong> {city}</p>
+                                        <p><strong>Région :</strong> {region}</p>
+                                        {rating && <p><strong>Note :</strong> {rating}/5</p>}
                                     </div>
                                 </div>
-                            </CardContent>
-                        </Card>
-                    </div>
+                                <div>
+                                    <h3 className="font-semibold text-foreground mb-2">
+                                        Établissement de qualité
+                                    </h3>
+                                    <p className="text-sm text-muted-foreground">
+                                        {title} fait partie de notre sélection d'établissements vérifiés 
+                                        pour vous garantir une expérience de qualité.
+                                    </p>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
                 </main>
             </div>
         </>
