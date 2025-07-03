@@ -1,10 +1,11 @@
 import ContentGrid from '@/components/layout/ContentGrid';
 import { getSlugs, getRegions, getCities, getListings } from '@/lib/content';
 import { notFound } from 'next/navigation';
-import { Building2, MapPin } from 'lucide-react';
+import { Building2, MapPin, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Metadata } from 'next';
 import { siteTexts } from '@config/texts.config';
+import Link from 'next/link';
 
 export async function generateStaticParams() {
     const params: { slug: string; region: string; city: string }[] = [];
@@ -57,6 +58,11 @@ export default function CityPage({ params: { slug, region, city } }: CityPagePro
     const cities = getCities(slug, region);
     if (!cities.includes(city)) return notFound();
     const listings = getListings(slug, region, city);
+    
+    // Get other cities in the same region for internal linking (exclude current city)
+    const otherCities = cities.filter(c => c !== city);
+    // Limit to 8 cities for better layout and performance
+    const relatedCities = otherCities.slice(0, 8);
     
     const jsonLd = {
         "@context": "https://schema.org",
@@ -122,6 +128,67 @@ export default function CityPage({ params: { slug, region, city } }: CityPagePro
                         <>
                             <ContentGrid items={listings} />
                             
+                            {/* Internal Linking - Other Cities in Region */}
+                            {relatedCities.length > 0 && (
+                                <div className="mt-20 mb-16">
+                                    <Card className="border-0 card-shadow bg-card">
+                                        <CardContent className="p-8">
+                                            <div className="text-center mb-8">
+                                                <h2 className="text-2xl lg:text-3xl font-heading font-bold text-foreground mb-4">
+                                                    Autres villes en {region}
+                                                </h2>
+                                                <p className="text-muted-foreground max-w-2xl mx-auto">
+                                                    Découvrez également nos sélections de {slug} dans d'autres villes de {region}
+                                                </p>
+                                            </div>
+                                            
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                {relatedCities.map((relatedCity) => {
+                                                    const relatedListings = getListings(slug, region, relatedCity);
+                                                    return (
+                                                        <Link 
+                                                            key={relatedCity} 
+                                                            href={`/${slug}/${region}/${relatedCity}`}
+                                                            className="group"
+                                                        >
+                                                            <Card className="h-full border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-background">
+                                                                <CardContent className="p-4 h-full flex flex-col justify-between">
+                                                                    <div className="space-y-2">
+                                                                        <h3 className="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">
+                                                                            {relatedCity}
+                                                                        </h3>
+                                                                        <p className="text-sm text-muted-foreground">
+                                                                            {relatedListings.length} {relatedListings.length === 1 ? 'établissement' : 'établissements'}
+                                                                        </p>
+                                                                    </div>
+                                                                    <div className="flex items-center gap-1 text-primary text-sm font-medium mt-3 group-hover:gap-2 transition-all duration-300">
+                                                                        <span>Découvrir</span>
+                                                                        <ArrowRight className="h-3 w-3" />
+                                                                    </div>
+                                                                </CardContent>
+                                                            </Card>
+                                                        </Link>
+                                                    );
+                                                })}
+                                            </div>
+                                            
+                                            {/* Link to region page if there are more cities */}
+                                            {otherCities.length > 8 && (
+                                                <div className="text-center mt-8">
+                                                    <Link 
+                                                        href={`/${slug}/${region}`}
+                                                        className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
+                                                    >
+                                                        Voir toutes les villes de {region}
+                                                        <ArrowRight className="h-4 w-4" />
+                                                    </Link>
+                                                </div>
+                                            )}
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            )}
+                            
                             {/* SEO Content Section - Moved to Bottom */}
                             <div className="max-w-4xl mx-auto mt-16 space-y-8">
                                 <Card className="border-0 card-shadow bg-card">
@@ -162,12 +229,10 @@ export default function CityPage({ params: { slug, region, city } }: CityPagePro
                                             </div>
                                             <div>
                                                 <h3 className="text-lg font-semibold text-foreground mb-3">
-                                                    Informations complètes
+                                                    {siteTexts.features.completeInformation.title}
                                                 </h3>
                                                 <p className="text-muted-foreground">
-                                                    Retrouvez pour chaque établissement les coordonnées, 
-                                                    horaires, services, équipements et avis clients pour 
-                                                    faire le meilleur choix.
+                                                    {siteTexts.features.completeInformation.description}
                                                 </p>
                                             </div>
                                         </div>
