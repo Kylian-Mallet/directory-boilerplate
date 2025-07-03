@@ -591,18 +591,6 @@ export const siteTexts: SiteTexts = {
     weekend: 'Week-end',
   },
 
-  // SEO content (keeping existing structure)
-  seo: {
-    paragraph1: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.',
-    paragraph2: 'Aliquam tincidunt metus nec arcu cursus, vel tempor risus ullamcorper. Integer sit amet eros a justo fermentum vehicula.',
-  },
-
-  // Legacy support (keeping existing structure)
-  tagPage: {
-    back: '← Retour à l\'accueil',
-    heading: 'Contenu tagué avec',
-  },
-
   notFound: {
     title: '404',
     message: 'Page non trouvée',
