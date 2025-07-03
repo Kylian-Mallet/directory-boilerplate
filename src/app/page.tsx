@@ -1,6 +1,7 @@
 import { getAllContent, getCities, getRegions, getSlugs } from '@/lib/content';
 import Search from '@/components/Search';
 import { siteTexts } from '@config/texts.config';
+import { seoConfig } from '@config/seo.config';
 import { directoryConfig } from '@config/directory.config';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Star, TrendingUp, Search as SearchIcon, Filter, Zap } from 'lucide-react';
@@ -294,15 +295,19 @@ export default function Home() {
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center space-y-8">
                         <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground">
-                            {siteTexts.features.trustedGuide}
+                            {seoConfig?.content?.homepage?.aboutSection?.title}
                         </h2>
                         <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
-                            <p className="text-lg leading-relaxed">
-                                {siteTexts.seo.paragraph1}
-                            </p>
-                            <p className="text-lg leading-relaxed">
-                                {siteTexts.seo.paragraph2}
-                            </p>
+                            {seoConfig?.content?.homepage?.aboutSection?.paragraphs?.[0] && (
+                                <p className="text-lg leading-relaxed">
+                                    {seoConfig.content.homepage.aboutSection.paragraphs[0]}
+                                </p>
+                            )}
+                            {seoConfig?.content?.homepage?.aboutSection?.paragraphs?.[1] && (
+                                <p className="text-lg leading-relaxed">
+                                    {seoConfig.content.homepage.aboutSection.paragraphs[1]}
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>
