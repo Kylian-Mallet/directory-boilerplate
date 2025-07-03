@@ -127,7 +127,7 @@ export default function RegionPage({ params: { slug, region } }: RegionPageProps
                                                 <Building2 className="h-8 w-8 text-white" />
                                             </div>
                                             <div>
-                                                <h2 className="text-xl font-heading font-bold text-foreground group-hover:text-secondary transition-colors">
+                                                <h2 className="text-xl font-heading font-bold text-foreground group-hover:text-secondary transition-colors capitalize">
                                                     {city}
                                                 </h2>
                                                 <p className="text-muted-foreground text-sm mt-1">
