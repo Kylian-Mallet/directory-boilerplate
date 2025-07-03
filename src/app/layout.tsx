@@ -7,6 +7,8 @@ import { directoryConfig } from '@config/directory.config';
 import { siteTexts } from '@config/texts.config';
 import Script from 'next/script';
 import { analyticsConfig } from '@config/analytics.config';
+import Link from 'next/link';
+import { MapPin, Phone, Mail, Clock, Star, Shield } from 'lucide-react';
 
 export const metadata: Metadata = generateMetadata();
 
@@ -17,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     const fontsUrl = `https://fonts.googleapis.com/css2?family=${headingFamily}:wght@300;400;500;600;700;800;900&family=${bodyFamily}:wght@300;400;500;600;700&display=swap`;
     
     return (
-        <html lang="en">
+        <html lang="fr">
         <head>
             {/* Preconnect to Google Fonts */}
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -104,15 +106,105 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div id="main-content" className="flex-1">
             {children}
         </div>
-        <footer className="bg-card border-t border-border py-12">
+        
+        {/* Enhanced Footer */}
+        <footer className="bg-card border-t border-border">
             <div className="container mx-auto px-4">
-                <div className="text-center space-y-4">
-                    <h3 className="text-2xl font-heading font-bold text-foreground">{directoryConfig.name}</h3>
-                    <p className="text-muted-foreground max-w-md mx-auto">{directoryConfig.description}</p>
-                    <div className="pt-4 border-t border-border">
-                        <p className="text-sm text-muted-foreground">
+                {/* Main Footer Content */}
+                <div className="py-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {/* Brand Section */}
+                        <div className="lg:col-span-2 space-y-6">
+                            <div>
+                                <h3 className="text-2xl font-heading font-bold text-foreground mb-4">
+                                    {directoryConfig.name}
+                                </h3>
+                                <p className="text-muted-foreground max-w-md leading-relaxed">
+                                    {directoryConfig.description}
+                                </p>
+                            </div>
+                            
+                            {/* Trust Indicators */}
+                            <div className="flex flex-wrap gap-4">
+                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                    <Shield className="h-4 w-4 text-primary" />
+                                    <span>Établissements vérifiés</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                    <Star className="h-4 w-4 text-accent" />
+                                    <span>Avis authentiques</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                    <Clock className="h-4 w-4 text-secondary" />
+                                    <span>Mis à jour quotidiennement</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Quick Links */}
+                        <div className="space-y-4">
+                            <h4 className="text-lg font-heading font-semibold text-foreground">
+                                Navigation
+                            </h4>
+                            <nav className="space-y-3">
+                                <Link href="/" className="block text-muted-foreground hover:text-foreground transition-colors">
+                                    Accueil
+                                </Link>
+                                <Link href="/#search" className="block text-muted-foreground hover:text-foreground transition-colors">
+                                    Rechercher
+                                </Link>
+                                <Link href="/#regions" className="block text-muted-foreground hover:text-foreground transition-colors">
+                                    Régions
+                                </Link>
+                            </nav>
+                        </div>
+
+                        {/* Contact Info */}
+                        <div className="space-y-4">
+                            <h4 className="text-lg font-heading font-semibold text-foreground">
+                                Contact
+                            </h4>
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-3 text-muted-foreground">
+                                    <MapPin className="h-4 w-4" />
+                                    <span className="text-sm">France</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-muted-foreground">
+                                    <Mail className="h-4 w-4" />
+                                    <a href="mailto:contact@example.com" className="text-sm hover:text-foreground transition-colors">
+                                        contact@example.com
+                                    </a>
+                                </div>
+                                <div className="flex items-center gap-3 text-muted-foreground">
+                                    <Phone className="h-4 w-4" />
+                                    <a href="tel:+33123456789" className="text-sm hover:text-foreground transition-colors">
+                                        +33 1 23 45 67 89
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom Footer */}
+                <div className="border-t border-border py-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-sm text-muted-foreground text-center md:text-left">
                             © {new Date().getFullYear()} {directoryConfig.name}. {siteTexts.footer.copyright}
                         </p>
+                        
+                        {/* Legal Links */}
+                        <div className="flex flex-wrap gap-6 text-sm">
+                            <a href="/mentions-legales" className="text-muted-foreground hover:text-foreground transition-colors">
+                                Mentions légales
+                            </a>
+                            <a href="/politique-confidentialite" className="text-muted-foreground hover:text-foreground transition-colors">
+                                Politique de confidentialité
+                            </a>
+                            <a href="/conditions-utilisation" className="text-muted-foreground hover:text-foreground transition-colors">
+                                Conditions d'utilisation
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
