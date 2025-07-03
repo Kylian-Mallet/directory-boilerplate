@@ -14,30 +14,31 @@ export const directoryConfig: DirectoryConfig = {
     theme: {
         fonts: {
             // Google Font family names with fallback
-            heading: 'Roboto, serif',
+            heading: 'Inter, sans-serif',
             body: 'Inter, sans-serif',
         },
         colors: {
-            primary: '#0f172a',
-            'primary-foreground': '#f8fafc',
-            secondary: '#475569',
-            'secondary-foreground': '#f8fafc',
-            destructive: '#e11d48',
-            'destructive-foreground': '#f8fafc',
-            muted: '#f1f5f9',
-            'muted-foreground': '#475569',
-            accent: '#7c3aed',
-            'accent-foreground': '#f8fafc',
+            // Modern sophisticated color palette
+            primary: '#2563eb',           // Vibrant blue
+            'primary-foreground': '#ffffff',
+            secondary: '#64748b',         // Slate gray
+            'secondary-foreground': '#ffffff',
+            destructive: '#dc2626',       // Modern red
+            'destructive-foreground': '#ffffff',
+            muted: '#f8fafc',            // Very light blue-gray
+            'muted-foreground': '#64748b',
+            accent: '#7c3aed',           // Purple accent
+            'accent-foreground': '#ffffff',
             popover: '#ffffff',
-            'popover-foreground': '#334155',
+            'popover-foreground': '#0f172a',
             card: '#ffffff',
-            'card-foreground': '#334155',
-            background: '#f8fafc',
-            foreground: '#334155',
-            border: '#e2e8f0',
-            input: '#f1f5f9',
-            ring: '#6366f1',
-            radius: '0.5rem',
+            'card-foreground': '#0f172a',
+            background: '#ffffff',        // Clean white background
+            foreground: '#0f172a',       // Deep slate for text
+            border: '#e2e8f0',           // Light border
+            input: '#f1f5f9',            // Light input background
+            ring: '#2563eb',             // Focus ring matches primary
+            radius: '0.75rem',           // Slightly more rounded
         },
     },
 };
