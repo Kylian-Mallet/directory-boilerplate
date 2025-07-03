@@ -9,8 +9,10 @@ import Pagination from './Pagination';
 import { directoryConfig } from '@config/directory.config';
 import { siteTexts } from '@config/texts.config';
 
-// Dynamically import the ContentGrid component
-const ContentGrid = dynamic(() => import('./layout/ContentGrid'));
+// Dynamically import the ContentGrid component with SSR disabled
+const ContentGrid = dynamic(() => import('./layout/ContentGrid'), {
+  ssr: false
+});
 
 export default function Search({ items }: { items: ContentItem[] }) {
   const [searchResults, setSearchResults] = useState(items);
