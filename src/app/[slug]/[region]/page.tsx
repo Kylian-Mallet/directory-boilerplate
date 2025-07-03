@@ -107,7 +107,7 @@ export default function RegionPage({ params: { slug, region } }: RegionPageProps
                             <MapPin className="h-4 w-4" />
                             {siteTexts.categories.region}
                         </div>
-                        <h1 className="text-4xl lg:text-6xl font-heading font-bold text-foreground mb-6">
+                        <h1 className="text-4xl lg:text-6xl font-heading font-bold text-foreground mb-6 capitalize">
                             {region}
                         </h1>
                         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
