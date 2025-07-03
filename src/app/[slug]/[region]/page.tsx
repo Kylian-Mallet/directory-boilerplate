@@ -115,29 +115,6 @@ export default function RegionPage({ params: { slug, region } }: RegionPageProps
                         </p>
                     </div>
 
-                    {/* SEO Content Section */}
-                    <div className="max-w-4xl mx-auto mb-16">
-                        <Card className="border-0 card-shadow bg-card">
-                            <CardContent className="p-8">
-                                <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
-                                    {slug.charAt(0).toUpperCase() + slug.slice(1)} en {region} : Guide complet
-                                </h2>
-                                <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
-                                    <p>
-                                        La région {region} offre une diversité exceptionnelle d'{slug.toLowerCase()} 
-                                        répartis dans {cities.length} villes. Chaque destination propose ses 
-                                        spécialités locales et son caractère unique.
-                                    </p>
-                                    <p>
-                                        Que vous soyez résident ou visiteur, notre sélection vous guide vers 
-                                        les meilleures adresses de {region}, avec des informations détaillées 
-                                        sur chaque établissement : services, équipements, horaires et avis clients.
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-
                     {/* Cities Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
                         {cities.map((city, index) => (
@@ -169,8 +146,28 @@ export default function RegionPage({ params: { slug, region } }: RegionPageProps
                         ))}
                     </div>
 
-                    {/* Regional Information */}
-                    <div className="max-w-4xl mx-auto">
+                    {/* SEO Content Section - Moved to Bottom */}
+                    <div className="max-w-4xl mx-auto space-y-8">
+                        <Card className="border-0 card-shadow bg-card">
+                            <CardContent className="p-8">
+                                <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
+                                    {slug.charAt(0).toUpperCase() + slug.slice(1)} en {region} : Guide complet
+                                </h2>
+                                <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
+                                    <p>
+                                        La région {region} offre une diversité exceptionnelle d'{slug.toLowerCase()} 
+                                        répartis dans {cities.length} villes. Chaque destination propose ses 
+                                        spécialités locales et son caractère unique.
+                                    </p>
+                                    <p>
+                                        Que vous soyez résident ou visiteur, notre sélection vous guide vers 
+                                        les meilleures adresses de {region}, avec des informations détaillées 
+                                        sur chaque établissement : services, équipements, horaires et avis clients.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+
                         <Card className="border-0 card-shadow bg-card">
                             <CardContent className="p-8">
                                 <h2 className="text-2xl font-heading font-bold text-foreground mb-6">

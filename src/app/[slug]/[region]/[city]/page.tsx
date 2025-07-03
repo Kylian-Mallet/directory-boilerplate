@@ -116,38 +116,33 @@ export default function CityPage({ params: { slug, region, city } }: CityPagePro
                         </p>
                     </div>
 
-                    {/* SEO Content Section */}
-                    {listings.length > 0 && (
-                        <div className="max-w-4xl mx-auto mb-16">
-                            <Card className="border-0 card-shadow bg-card">
-                                <CardContent className="p-8">
-                                    <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
-                                        {slug.charAt(0).toUpperCase() + slug.slice(1)} à {city} : Notre sélection
-                                    </h2>
-                                    <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
-                                        <p>
-                                            {city}, située en {region}, propose une sélection de {listings.length} {slug.toLowerCase()} 
-                                            de qualité. Chaque établissement a été choisi pour son excellence et la satisfaction 
-                                            de ses clients.
-                                        </p>
-                                        <p>
-                                            Notre annuaire vous fournit toutes les informations nécessaires : coordonnées, 
-                                            horaires d'ouverture, services proposés, équipements disponibles et avis clients 
-                                            pour vous aider à faire le meilleur choix.
-                                        </p>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    )}
-
                     {/* Listings */}
                     {listings.length > 0 ? (
                         <>
                             <ContentGrid items={listings} />
                             
-                            {/* Additional City Information */}
-                            <div className="max-w-4xl mx-auto mt-16">
+                            {/* SEO Content Section - Moved to Bottom */}
+                            <div className="max-w-4xl mx-auto mt-16 space-y-8">
+                                <Card className="border-0 card-shadow bg-card">
+                                    <CardContent className="p-8">
+                                        <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
+                                            {slug.charAt(0).toUpperCase() + slug.slice(1)} à {city} : Notre sélection
+                                        </h2>
+                                        <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
+                                            <p>
+                                                {city}, située en {region}, propose une sélection de {listings.length} {slug.toLowerCase()} 
+                                                de qualité. Chaque établissement a été choisi pour son excellence et la satisfaction 
+                                                de ses clients.
+                                            </p>
+                                            <p>
+                                                Notre annuaire vous fournit toutes les informations nécessaires : coordonnées, 
+                                                horaires d'ouverture, services proposés, équipements disponibles et avis clients 
+                                                pour vous aider à faire le meilleur choix.
+                                            </p>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+
                                 <Card className="border-0 card-shadow bg-card">
                                     <CardContent className="p-8">
                                         <h2 className="text-2xl font-heading font-bold text-foreground mb-6">

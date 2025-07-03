@@ -99,29 +99,6 @@ export default function SlugPage({ params: { slug } }: SlugPageProps) {
                         </p>
                     </div>
 
-                    {/* SEO Content Section */}
-                    <div className="max-w-4xl mx-auto mb-16">
-                        <Card className="border-0 card-shadow bg-card">
-                            <CardContent className="p-8">
-                                <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
-                                    Pourquoi choisir notre annuaire de {slug} ?
-                                </h2>
-                                <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
-                                    <p>
-                                        Notre plateforme vous offre un accès privilégié aux meilleurs {slug} de France, 
-                                        répartis dans {regions.length} régions. Chaque établissement est soigneusement 
-                                        sélectionné selon des critères de qualité stricts.
-                                    </p>
-                                    <p>
-                                        Que vous recherchiez un service de proximité ou que vous planifiez un voyage, 
-                                        notre annuaire vous guide vers les meilleures adresses, avec des informations 
-                                        détaillées, des avis clients et des coordonnées à jour.
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-
                     {/* Regions Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
                         {regions.map((region, index) => (
@@ -153,8 +130,28 @@ export default function SlugPage({ params: { slug } }: SlugPageProps) {
                         ))}
                     </div>
 
-                    {/* Additional SEO Content */}
-                    <div className="max-w-4xl mx-auto">
+                    {/* SEO Content Section - Moved to Bottom */}
+                    <div className="max-w-4xl mx-auto space-y-8">
+                        <Card className="border-0 card-shadow bg-card">
+                            <CardContent className="p-8">
+                                <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
+                                    Pourquoi choisir notre annuaire de {slug} ?
+                                </h2>
+                                <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
+                                    <p>
+                                        Notre plateforme vous offre un accès privilégié aux meilleurs {slug} de France, 
+                                        répartis dans {regions.length} régions. Chaque établissement est soigneusement 
+                                        sélectionné selon des critères de qualité stricts.
+                                    </p>
+                                    <p>
+                                        Que vous recherchiez un service de proximité ou que vous planifiez un voyage, 
+                                        notre annuaire vous guide vers les meilleures adresses, avec des informations 
+                                        détaillées, des avis clients et des coordonnées à jour.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+
                         <Card className="border-0 card-shadow bg-card">
                             <CardContent className="p-8">
                                 <h2 className="text-2xl font-heading font-bold text-foreground mb-6">

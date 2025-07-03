@@ -300,7 +300,7 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
 
                     {/* Bottom CTA */}
                     {affiliateLink && (
-                        <div className="text-center">
+                        <div className="text-center mb-12">
                             <Card className="bg-primary border-0 shadow-2xl">
                                 <CardContent className="p-8">
                                     <h3 className="text-2xl font-heading font-bold text-primary-foreground mb-4">
@@ -323,6 +323,40 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                             </Card>
                         </div>
                     )}
+
+                    {/* SEO Content Section - Moved to Bottom */}
+                    <div className="max-w-4xl mx-auto">
+                        <Card className="border-0 card-shadow bg-card">
+                            <CardContent className="p-8">
+                                <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
+                                    À propos de {title}
+                                </h2>
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-foreground mb-3">
+                                            Informations pratiques
+                                        </h3>
+                                        <div className="space-y-2 text-muted-foreground">
+                                            <p><strong>Type :</strong> {meta.type}</p>
+                                            <p><strong>Ville :</strong> {city}</p>
+                                            <p><strong>Région :</strong> {region}</p>
+                                            {rating && <p><strong>Note :</strong> {rating}/5</p>}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-foreground mb-3">
+                                            Pourquoi nous choisir ?
+                                        </h3>
+                                        <p className="text-muted-foreground">
+                                            {title} fait partie de notre sélection d'établissements de qualité 
+                                            à {city}. Nous vérifions régulièrement nos partenaires pour vous 
+                                            garantir une expérience exceptionnelle.
+                                        </p>
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </main>
             </div>
         </>
