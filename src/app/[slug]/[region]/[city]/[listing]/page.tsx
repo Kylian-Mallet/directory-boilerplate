@@ -196,7 +196,7 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                                         <Button 
                                             asChild 
                                             variant="outline"
-                                            className="flex-1 border-primary/30 hover:bg-primary/10"
+                                            className="flex-1 border-primary/30 bg-background hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 shadow-sm hover:shadow-md"
                                         >
                                             <a href={`tel:${phone}`} className="flex items-center gap-2">
                                                 <Phone className="h-4 w-4" />
@@ -208,7 +208,7 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                                     {affiliateLink && (
                                         <Button 
                                             asChild 
-                                            className="flex-1 bg-primary hover:bg-primary/90"
+                                            className="flex-1 bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300"
                                         >
                                             <a href={affiliateLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                                                 <ExternalLink className="h-4 w-4" />
