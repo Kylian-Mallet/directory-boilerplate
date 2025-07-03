@@ -155,11 +155,6 @@ export default function Home() {
                     {/* Main Search Component */}
                     <div className="max-w-6xl mx-auto">
                       <Search items={content} />
-                        <Card className="border-0 card-shadow bg-card/95 backdrop-blur-sm overflow-hidden">
-                            <CardContent className="p-8 lg:p-12">
-                                
-                            </CardContent>
-                        </Card>
                     </div>
 
                     {/* Quick Stats */}
