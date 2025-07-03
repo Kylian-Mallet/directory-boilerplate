@@ -25,7 +25,7 @@ export default function ContentCard({ item }: ContentCardProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     {meta.type && (
                         <div className="absolute top-3 right-3">
-                            <span className="inline-flex items-center gap-1 bg-card/90 backdrop-blur-sm text-card-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg border border-border">
+                            <span className="inline-flex items-center gap-1 bg-white/95 backdrop-blur-sm text-gray-800 text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg border border-white/20">
                                 <Award className="h-3 w-3" />
                                 {meta.type}
                             </span>
