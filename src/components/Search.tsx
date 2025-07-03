@@ -12,7 +12,7 @@ import { Search as SearchIcon, Filter } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 
 export default function Search({ items }: { items: ContentItem[] }) {
-  const [searchResults, setSearchResults] = useState(items);
+  const [searchResults, setSearchResults] = useState(items || []);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -29,7 +29,7 @@ export default function Search({ items }: { items: ContentItem[] }) {
   };
 
   const filterContent = (query: string, types: string[]) => {
-    const filtered = items.filter((item) => {
+    const filtered = (items || []).filter((item) => {
       // Prepare searchable text from new frontmatter fields
       const searchText = [
         item.meta.name,
@@ -58,7 +58,7 @@ export default function Search({ items }: { items: ContentItem[] }) {
 
   // Get all unique business types for filtering
   const allTypes = Array.from(new Set(
-    items.map(item => item.meta.type as string).filter(Boolean)
+    (items || []).map(item => item.meta.type as string).filter(Boolean)
   ));
 
   return (
@@ -100,7 +100,7 @@ export default function Search({ items }: { items: ContentItem[] }) {
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedTypes([]);
-                  setSearchResults(items);
+                  setSearchResults(items || []);
                   setCurrentPage(1);
                 }}
                 className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
