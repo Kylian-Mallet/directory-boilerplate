@@ -177,7 +177,7 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                                             </div>
                                             {reviews && (
                                                 <span className="text-muted-foreground">
-                                                    {reviews} avis
+                                                    {reviews} {siteTexts.listing.reviews}
                                                 </span>
                                             )}
                                         </div>
@@ -231,7 +231,7 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                                 <CardContent className="p-6">
                                     <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                                         <Clock className="h-5 w-5 text-accent" />
-                                        Horaires d'ouverture
+                                        {siteTexts.listing.openingHours}
                                     </h3>
                                     <div className="space-y-2">
                                         {openingHours.map((hour, index) => (
@@ -250,7 +250,7 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                                 <CardContent className="p-6">
                                     <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                                         <Shield className="h-5 w-5 text-primary" />
-                                        Services
+                                        {siteTexts.listing.services}
                                     </h3>
                                     <div className="space-y-3">
                                         {services.map((service, index) => (
@@ -272,7 +272,7 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                                 <CardContent className="p-6">
                                     <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                                         <Award className="h-5 w-5 text-secondary" />
-                                        Équipements
+                                        {siteTexts.listing.equipment}
                                     </h3>
                                     <div className="space-y-3">
                                         {equipment.map((item, index) => (
@@ -304,10 +304,10 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                             <Card className="bg-primary border-0 shadow-2xl">
                                 <CardContent className="p-8">
                                     <h3 className="text-2xl font-heading font-bold text-primary-foreground mb-4">
-                                        Prêt à découvrir {title} ?
+                                        {siteTexts.listing.readyToDiscover} {title} ?
                                     </h3>
                                     <p className="text-primary-foreground/80 mb-6 text-lg">
-                                        Visitez leur site officiel pour plus d'informations et réservations
+                                        {siteTexts.listing.visitOfficialSite}
                                     </p>
                                     <Button 
                                         asChild 
@@ -329,28 +329,26 @@ export default function ListingPage({ params: { slug, region, city, listing } }:
                         <Card className="border-0 card-shadow bg-card">
                             <CardContent className="p-8">
                                 <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
-                                    À propos de {title}
+                                    {siteTexts.listing.about} {title}
                                 </h2>
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div>
                                         <h3 className="text-lg font-semibold text-foreground mb-3">
-                                            Informations pratiques
+                                            {siteTexts.listing.practicalInfo}
                                         </h3>
                                         <div className="space-y-2 text-muted-foreground">
-                                            <p><strong>Type :</strong> {meta.type}</p>
-                                            <p><strong>Ville :</strong> {city}</p>
-                                            <p><strong>Région :</strong> {region}</p>
-                                            {rating && <p><strong>Note :</strong> {rating}/5</p>}
+                                            <p><strong>{siteTexts.listing.type} :</strong> {meta.type}</p>
+                                            <p><strong>{siteTexts.listing.city} :</strong> {city}</p>
+                                            <p><strong>{siteTexts.listing.region} :</strong> {region}</p>
+                                            {rating && <p><strong>{siteTexts.listing.note} :</strong> {rating}/5</p>}
                                         </div>
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-semibold text-foreground mb-3">
-                                            Pourquoi nous choisir ?
+                                            {siteTexts.listing.whyChooseUs}
                                         </h3>
                                         <p className="text-muted-foreground">
-                                            {title} fait partie de notre sélection d'établissements de qualité 
-                                            à {city}. Nous vérifions régulièrement nos partenaires pour vous 
-                                            garantir une expérience exceptionnelle.
+                                            {title} {siteTexts.listing.qualityPartner}
                                         </p>
                                     </div>
                                 </div>

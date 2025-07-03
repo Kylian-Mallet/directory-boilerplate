@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { directoryConfig } from '@config/directory.config';
+import { siteTexts } from '@config/texts.config';
 import { Search, Menu, ArrowLeft } from 'lucide-react';
 
 const Navbar = () => {
@@ -21,25 +22,25 @@ const Navbar = () => {
       // On listing page: back to city
       return {
         href: `/${slug}/${region}/${city}`,
-        label: `Retour à ${city}`
+        label: `${siteTexts.navigation.backToCity} ${city}`
       };
     } else if (city) {
       // On city page: back to region
       return {
         href: `/${slug}/${region}`,
-        label: `Retour à ${region}`
+        label: `${siteTexts.navigation.backToRegion} ${region}`
       };
     } else if (region) {
       // On region page: back to slug
       return {
         href: `/${slug}`,
-        label: `Retour à ${slug}`
+        label: `${siteTexts.navigation.backToCategory} ${slug}`
       };
     } else if (slug) {
       // On slug page: back to home
       return {
         href: '/',
-        label: 'Retour à l\'accueil'
+        label: siteTexts.navigation.backToHome
       };
     }
     
@@ -89,7 +90,7 @@ const Navbar = () => {
               className="hidden sm:flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors px-3 py-2 rounded-lg hover:bg-muted"
             >
               <Search className="h-4 w-4" />
-              <span className="text-sm font-medium">Rechercher</span>
+              <span className="text-sm font-medium">{siteTexts.navigation.search}</span>
             </Link>
             
             <button className="sm:hidden p-2 rounded-lg hover:bg-muted transition-colors">

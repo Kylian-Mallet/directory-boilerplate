@@ -2,6 +2,7 @@
 
 import { Button } from './ui/button';
 import { X } from 'lucide-react';
+import { siteTexts } from '@config/texts.config';
 
 interface TagFilterProps {
   tags: string[];
@@ -51,7 +52,7 @@ export default function TagFilter({ tags, selectedTags, onChange }: TagFilterPro
           onClick={clearAll}
           className="text-muted-foreground hover:text-foreground"
         >
-          Effacer tous les filtres
+          {siteTexts.tags.clearAll}
         </Button>
       )}
     </div>

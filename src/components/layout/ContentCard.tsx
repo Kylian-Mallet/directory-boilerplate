@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { ContentItem } from '@/types/content';
 import { Button } from '@/components/ui/button';
+import { siteTexts } from '@config/texts.config';
 
 interface ContentCardProps {
     item: ContentItem;
@@ -84,7 +85,7 @@ export default function ContentCard({ item }: ContentCardProps) {
                         className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg transition-all duration-300"
                     >
                         <Link href={`/${fileName}`} className="flex items-center gap-2">
-                            Voir détails
+                            {siteTexts.content.viewDetails}
                             <ExternalLink className="h-4 w-4" />
                         </Link>
                     </Button>

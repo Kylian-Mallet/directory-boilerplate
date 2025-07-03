@@ -81,7 +81,7 @@ export default function Search({ items }: { items: ContentItem[] }) {
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
               <Filter className="h-4 w-4" />
-              Filtrer par catégorie
+              {siteTexts.search.filterByCategory}
             </div>
             <TagFilter 
               tags={allTypes}
@@ -93,7 +93,7 @@ export default function Search({ items }: { items: ContentItem[] }) {
           {/* Results count */}
           <div className="flex items-center justify-between pt-4 border-t border-border">
             <p className="text-sm text-muted-foreground">
-              {searchResults.length} résultat{searchResults.length !== 1 ? 's' : ''} trouvé{searchResults.length !== 1 ? 's' : ''}
+              {searchResults.length} {searchResults.length === 1 ? siteTexts.search.resultFound : siteTexts.search.resultsFound}
             </p>
             {(searchQuery || selectedTypes.length > 0) && (
               <button
@@ -105,7 +105,7 @@ export default function Search({ items }: { items: ContentItem[] }) {
                 }}
                 className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
               >
-                Effacer les filtres
+                {siteTexts.search.clearFilters}
               </button>
             )}
           </div>
@@ -134,10 +134,10 @@ export default function Search({ items }: { items: ContentItem[] }) {
                 <SearchIcon className="h-8 w-8 text-muted-foreground" />
               </div>
               <h3 className="text-xl font-heading font-semibold text-foreground">
-                Aucun résultat trouvé
+                {siteTexts.search.noResultsTitle}
               </h3>
               <p className="text-muted-foreground max-w-md mx-auto">
-                Essayez de modifier vos critères de recherche ou explorez nos catégories populaires.
+                {siteTexts.search.noResultsMessage}
               </p>
             </div>
           </CardContent>

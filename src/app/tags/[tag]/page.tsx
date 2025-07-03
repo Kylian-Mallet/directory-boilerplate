@@ -2,8 +2,8 @@ import { getContentByTag } from '@/lib/content';
 import ContentGrid from '@/components/layout/ContentGrid';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-
 import { siteTexts } from '@config/texts.config';
+
 export default function TagPage({ params }: { params: { tag: string } }) {
   const content = getContentByTag(params.tag);
 

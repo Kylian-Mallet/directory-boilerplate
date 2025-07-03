@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { MapPin, TrendingUp } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Metadata } from 'next';
+import { siteTexts } from '@config/texts.config';
 
 export async function generateStaticParams() {
     const slugs = getSlugs();
@@ -88,7 +89,7 @@ export default function SlugPage({ params: { slug } }: SlugPageProps) {
                     <div className="text-center mb-16">
                         <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
                             <TrendingUp className="h-4 w-4" />
-                            Catégorie
+                            {siteTexts.categories.category}
                         </div>
                         <h1 className="text-4xl lg:text-6xl font-heading font-bold text-foreground mb-6 capitalize">
                             {slug}
@@ -121,7 +122,7 @@ export default function SlugPage({ params: { slug } }: SlugPageProps) {
                                         
                                         <div className="pt-4">
                                             <div className="text-sm text-primary font-medium group-hover:text-primary/80 transition-colors">
-                                                Explorer →
+                                                {siteTexts.navigation.explore} →
                                             </div>
                                         </div>
                                     </CardContent>

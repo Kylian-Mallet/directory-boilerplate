@@ -100,7 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </>
         )}
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg z-50">
-            {siteTexts.skipToContent}
+            {siteTexts.common.skipToContent}
         </a>
         <Navbar/>
         <div id="main-content" className="flex-1">
@@ -128,15 +128,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             <div className="flex flex-wrap gap-4">
                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                     <Shield className="h-4 w-4 text-primary" />
-                                    <span>Établissements vérifiés</span>
+                                    <span>{siteTexts.footer.trustIndicators.verified}</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                     <Star className="h-4 w-4 text-accent" />
-                                    <span>Avis authentiques</span>
+                                    <span>{siteTexts.footer.trustIndicators.authentic}</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                     <Clock className="h-4 w-4 text-secondary" />
-                                    <span>Mis à jour quotidiennement</span>
+                                    <span>{siteTexts.footer.trustIndicators.updated}</span>
                                 </div>
                             </div>
                         </div>
@@ -144,17 +144,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         {/* Quick Links */}
                         <div className="space-y-4">
                             <h4 className="text-lg font-heading font-semibold text-foreground">
-                                Navigation
+                                {siteTexts.footer.navigation}
                             </h4>
                             <nav className="space-y-3">
                                 <Link href="/" className="block text-muted-foreground hover:text-foreground transition-colors">
-                                    Accueil
+                                    {siteTexts.navigation.home}
                                 </Link>
                                 <Link href="/#search" className="block text-muted-foreground hover:text-foreground transition-colors">
-                                    Rechercher
+                                    {siteTexts.navigation.search}
                                 </Link>
                                 <Link href="/#regions" className="block text-muted-foreground hover:text-foreground transition-colors">
-                                    Régions
+                                    {siteTexts.navigation.regions}
                                 </Link>
                             </nav>
                         </div>
@@ -162,23 +162,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         {/* Contact Info */}
                         <div className="space-y-4">
                             <h4 className="text-lg font-heading font-semibold text-foreground">
-                                Contact
+                                {siteTexts.footer.contact}
                             </h4>
                             <div className="space-y-3">
                                 <div className="flex items-center gap-3 text-muted-foreground">
                                     <MapPin className="h-4 w-4" />
-                                    <span className="text-sm">France</span>
+                                    <span className="text-sm">{siteTexts.footer.contactInfo.country}</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-muted-foreground">
                                     <Mail className="h-4 w-4" />
-                                    <a href="mailto:contact@example.com" className="text-sm hover:text-foreground transition-colors">
-                                        contact@example.com
+                                    <a href={`mailto:${siteTexts.footer.contactInfo.email}`} className="text-sm hover:text-foreground transition-colors">
+                                        {siteTexts.footer.contactInfo.email}
                                     </a>
                                 </div>
                                 <div className="flex items-center gap-3 text-muted-foreground">
                                     <Phone className="h-4 w-4" />
-                                    <a href="tel:+33123456789" className="text-sm hover:text-foreground transition-colors">
-                                        +33 1 23 45 67 89
+                                    <a href={`tel:${siteTexts.footer.contactInfo.phone}`} className="text-sm hover:text-foreground transition-colors">
+                                        {siteTexts.footer.contactInfo.phone}
                                     </a>
                                 </div>
                             </div>
@@ -196,13 +196,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         {/* Legal Links */}
                         <div className="flex flex-wrap gap-6 text-sm">
                             <a href="/mentions-legales" className="text-muted-foreground hover:text-foreground transition-colors">
-                                Mentions légales
+                                {siteTexts.footer.legal.legalNotice}
                             </a>
                             <a href="/politique-confidentialite" className="text-muted-foreground hover:text-foreground transition-colors">
-                                Politique de confidentialité
+                                {siteTexts.footer.legal.privacy}
                             </a>
                             <a href="/conditions-utilisation" className="text-muted-foreground hover:text-foreground transition-colors">
-                                Conditions d'utilisation
+                                {siteTexts.footer.legal.terms}
                             </a>
                         </div>
                     </div>

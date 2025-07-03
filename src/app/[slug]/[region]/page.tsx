@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { MapPin, Building2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Metadata } from 'next';
+import { siteTexts } from '@config/texts.config';
 
 export async function generateStaticParams() {
     const params: { slug: string; region: string }[] = [];
@@ -104,7 +105,7 @@ export default function RegionPage({ params: { slug, region } }: RegionPageProps
                     <div className="text-center mb-16">
                         <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-semibold mb-6">
                             <MapPin className="h-4 w-4" />
-                            Région
+                            {siteTexts.categories.region}
                         </div>
                         <h1 className="text-4xl lg:text-6xl font-heading font-bold text-foreground mb-6">
                             {region}
@@ -137,7 +138,7 @@ export default function RegionPage({ params: { slug, region } }: RegionPageProps
                                         
                                         <div className="pt-4">
                                             <div className="text-sm text-secondary font-medium group-hover:text-secondary/80 transition-colors">
-                                                Découvrir →
+                                                {siteTexts.navigation.discover} →
                                             </div>
                                         </div>
                                     </CardContent>

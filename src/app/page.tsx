@@ -45,7 +45,7 @@ export default function Home() {
                                 asChild
                             >
                                 <Link href="#search" className="flex items-center gap-2">
-                                    Découvrir
+                                    {siteTexts.hero.primaryButton}
                                     <ArrowRight className="h-5 w-5" />
                                 </Link>
                             </Button>
@@ -56,7 +56,7 @@ export default function Home() {
                                 asChild
                             >
                                 <Link href="#regions">
-                                    Explorer les régions
+                                    {siteTexts.hero.secondaryButton}
                                 </Link>
                             </Button>
                         </div>
@@ -67,19 +67,19 @@ export default function Home() {
                                 <div className="text-3xl lg:text-4xl font-heading font-bold text-white">
                                     {content.length}+
                                 </div>
-                                <div className="text-white/80 font-medium">Établissements</div>
+                                <div className="text-white/80 font-medium">{siteTexts.hero.stats.establishments}</div>
                             </div>
                             <div className="text-center">
                                 <div className="text-3xl lg:text-4xl font-heading font-bold text-white">
                                     {regions.length}+
                                 </div>
-                                <div className="text-white/80 font-medium">Régions</div>
+                                <div className="text-white/80 font-medium">{siteTexts.hero.stats.regions}</div>
                             </div>
                             <div className="text-center">
                                 <div className="text-3xl lg:text-4xl font-heading font-bold text-white">
                                     4.8
                                 </div>
-                                <div className="text-white/80 font-medium">Note moyenne</div>
+                                <div className="text-white/80 font-medium">{siteTexts.hero.stats.averageRating}</div>
                             </div>
                         </div>
                     </div>
@@ -97,13 +97,13 @@ export default function Home() {
                     <div className="text-center mb-16">
                         <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg">
                             <SearchIcon className="h-4 w-4" />
-                            Recherche Intelligente
+                            {siteTexts.search.intelligentSearch}
                         </div>
                         <h2 className="text-4xl lg:text-6xl font-heading font-bold text-foreground mb-6">
                             {siteTexts.search.title}
                         </h2>
                         <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                            Trouvez rapidement les meilleurs établissements grâce à notre système de recherche avancé et nos filtres intelligents
+                            {siteTexts.search.quickSearchDescription}
                         </p>
                     </div>
 
@@ -115,10 +115,10 @@ export default function Home() {
                                     <SearchIcon className="h-8 w-8 text-primary" />
                                 </div>
                                 <h3 className="text-xl font-heading font-bold text-foreground">
-                                    Recherche Rapide
+                                    {siteTexts.search.searchFeatures.quickSearch.title}
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Trouvez instantanément ce que vous cherchez par nom, adresse ou service
+                                    {siteTexts.search.searchFeatures.quickSearch.description}
                                 </p>
                             </CardContent>
                         </Card>
@@ -129,10 +129,10 @@ export default function Home() {
                                     <Filter className="h-8 w-8 text-secondary" />
                                 </div>
                                 <h3 className="text-xl font-heading font-bold text-foreground">
-                                    Filtres Avancés
+                                    {siteTexts.search.searchFeatures.advancedFilters.title}
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Affinez vos résultats par catégorie, services et équipements
+                                    {siteTexts.search.searchFeatures.advancedFilters.description}
                                 </p>
                             </CardContent>
                         </Card>
@@ -143,10 +143,10 @@ export default function Home() {
                                     <Zap className="h-8 w-8 text-accent" />
                                 </div>
                                 <h3 className="text-xl font-heading font-bold text-foreground">
-                                    Résultats Instantanés
+                                    {siteTexts.search.searchFeatures.instantResults.title}
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Obtenez des résultats pertinents en temps réel pendant que vous tapez
+                                    {siteTexts.search.searchFeatures.instantResults.description}
                                 </p>
                             </CardContent>
                         </Card>
@@ -163,25 +163,25 @@ export default function Home() {
                             <div className="text-2xl lg:text-3xl font-heading font-bold text-primary mb-2">
                                 {content.length}
                             </div>
-                            <div className="text-sm text-muted-foreground font-medium">Établissements référencés</div>
+                            <div className="text-sm text-muted-foreground font-medium">{siteTexts.stats.establishments}</div>
                         </div>
                         <div className="text-center p-6 bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50">
                             <div className="text-2xl lg:text-3xl font-heading font-bold text-secondary mb-2">
                                 {regions.length}
                             </div>
-                            <div className="text-sm text-muted-foreground font-medium">Régions couvertes</div>
+                            <div className="text-sm text-muted-foreground font-medium">{siteTexts.stats.regions}</div>
                         </div>
                         <div className="text-center p-6 bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50">
                             <div className="text-2xl lg:text-3xl font-heading font-bold text-accent mb-2">
                                 100%
                             </div>
-                            <div className="text-sm text-muted-foreground font-medium">Gratuit</div>
+                            <div className="text-sm text-muted-foreground font-medium">{siteTexts.hero.stats.free}</div>
                         </div>
                         <div className="text-center p-6 bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50">
                             <div className="text-2xl lg:text-3xl font-heading font-bold text-primary mb-2">
                                 24/7
                             </div>
-                            <div className="text-sm text-muted-foreground font-medium">Disponible</div>
+                            <div className="text-sm text-muted-foreground font-medium">{siteTexts.hero.stats.available}</div>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@ export default function Home() {
                     <div className="text-center mb-16">
                         <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
                             <TrendingUp className="h-4 w-4" />
-                            Populaire
+                            {siteTexts.categories.popular}
                         </div>
                         <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
                             {siteTexts.regions.title}
@@ -216,7 +216,7 @@ export default function Home() {
                                                 {region}
                                             </h3>
                                             <p className="text-muted-foreground text-sm">
-                                                {getCities(mainSlug, region).length} villes
+                                                {getCities(mainSlug, region).length} {siteTexts.categories.cities}
                                             </p>
                                         </div>
                                         <div className="flex items-center justify-center gap-1 text-accent">
@@ -236,7 +236,7 @@ export default function Home() {
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
-                            Pourquoi nous choisir ?
+                            {siteTexts.features.whyChooseUs}
                         </h2>
                         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                             Une plateforme moderne et intuitive pour découvrir les meilleurs établissements
@@ -250,10 +250,10 @@ export default function Home() {
                                     <SearchIcon className="h-8 w-8 text-primary" />
                                 </div>
                                 <h3 className="text-2xl font-heading font-bold text-foreground">
-                                    Recherche Avancée
+                                    {siteTexts.features.advancedSearch.title}
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Trouvez exactement ce que vous cherchez avec nos filtres intelligents
+                                    {siteTexts.features.advancedSearch.description}
                                 </p>
                             </CardContent>
                         </Card>
@@ -264,10 +264,10 @@ export default function Home() {
                                     <Star className="h-8 w-8 text-secondary" />
                                 </div>
                                 <h3 className="text-2xl font-heading font-bold text-foreground">
-                                    Qualité Garantie
+                                    {siteTexts.features.qualityGuaranteed.title}
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Tous nos établissements sont soigneusement sélectionnés et vérifiés
+                                    {siteTexts.features.qualityGuaranteed.description}
                                 </p>
                             </CardContent>
                         </Card>
@@ -278,10 +278,10 @@ export default function Home() {
                                     <MapPin className="h-8 w-8 text-accent" />
                                 </div>
                                 <h3 className="text-2xl font-heading font-bold text-foreground">
-                                    Couverture Nationale
+                                    {siteTexts.features.nationalCoverage.title}
                                 </h3>
                                 <p className="text-muted-foreground">
-                                    Découvrez des établissements dans toute la France
+                                    {siteTexts.features.nationalCoverage.description}
                                 </p>
                             </CardContent>
                         </Card>
@@ -294,7 +294,7 @@ export default function Home() {
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center space-y-8">
                         <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground">
-                            Votre guide de confiance
+                            {siteTexts.features.trustedGuide}
                         </h2>
                         <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
                             <p className="text-lg leading-relaxed">
