@@ -33,8 +33,8 @@ export default function TagFilter({ tags, selectedTags, onChange }: TagFilterPro
             onClick={() => toggleTag(tag)}
             className={`rounded-full transition-all duration-300 ${
               selectedTags.includes(tag) 
-                ? 'bg-primary text-primary-foreground shadow-lg hover:shadow-xl' 
-                : 'hover:bg-muted hover:border-primary/50'
+                ? 'bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:bg-primary/90' 
+                : 'hover:bg-primary/10 hover:border-primary hover:text-primary border-2'
             }`}
           >
             {tag}
@@ -50,7 +50,7 @@ export default function TagFilter({ tags, selectedTags, onChange }: TagFilterPro
           variant="ghost"
           size="sm"
           onClick={clearAll}
-          className="text-muted-foreground hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground hover:bg-muted/80"
         >
           {siteTexts.tags.clearAll}
         </Button>
